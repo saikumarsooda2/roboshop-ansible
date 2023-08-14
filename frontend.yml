@@ -12,16 +12,16 @@
       path: /usr/share/nginx/html
       state: absent
       
+  - name: create a directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: directory
+      
   - name: downloading and extracting frontend
     ansible.builtin.unarchive:
       src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
-      
-  - name: create a directory
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: directory
         
   - name: Copy the roboshop file
     ansible.builtin.copy:
