@@ -32,19 +32,10 @@
 
      - name: start and enable nginx
        ansible.builtin.systemd:
-         state: started
+         state: restarted
+         name: nginx
          enabled: true
 
-
-echo -e "\e[33m copying the roboshop config file \e[0m"
-cp /home/centos/robosho-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf   &>>log_file
-status_check $?
-
-echo -e "\e[33m enabling the nginx server \e[0m"
-systemctl enable nginx   &>>log_file
-status_check $?
-systemctl restart nginx   &>>log_file
-status_check $?
 
 
 
