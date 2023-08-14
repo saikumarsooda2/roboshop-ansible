@@ -2,104 +2,35 @@
     host: all
     become: yes
     tasks:
-      - name: installing nginx server
-        ansible.builtin.yum:
+    - name: installing nginx server
+      ansible.builtin.yum:
           name: nginx
           stat: latest
 
-      - name: removing directory
-        ansible.builtin.file:
+    - name: removing directory
+      ansible.builtin.file:
           path: /usr/share/nginx/html
           state: absent
           
-      - name: removing directory
-        ansible.builtin.file:
+    - name: removing directory
+      ansible.builtin.file:
           path: /usr/share/nginx/html
           state: absent
           
-      - name: create a directory
-        ansible.builtin.file:
+    - name: create a directory
+      ansible.builtin.file:
             path: /usr/share/nginx/html
             state: directory
 
-      - name: Copy the roboshop file
-        ansible.builtin.copy:
+    - name: Copy the roboshop file
+      ansible.builtin.copy:
           src: roboshop.conf
           dest: /etc/nginx/default.d/roboshop.conf
           
-      - name: start and enable nginx
-        ansible.builtin.systemd:
+    - name: start and enable nginx
+      ansible.builtin.systemd:
           state: restarted
           name: nginx
           enabled: true
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   ++
