@@ -3,7 +3,6 @@
   host: all
   become: yes
   tasks:
-
      - name: installing nginx server
        ansible.builtin.yum:
          name: nginx
