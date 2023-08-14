@@ -1,0 +1,93 @@
+
+- name: setup frontend
+  host: all
+  become: yes
+  tasks:
+
+     - name: installing nginx server
+       ansible.builtin.yum:
+         name: nginx
+         state: latest
+
+     - name: removing directory
+       ansible.builtin.file:
+         path: /usr/share/nginx/html
+         state: absent
+
+     - name: create a directory
+       ansible.builtin.file:
+         path: /usr/share/nginx/html
+         state: directory
+
+     - name: download and extract the file
+       ansible.builtin.unarchive:
+         src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+         dest: /usr/share/nginx/html
+         remote_src: yes
+
+     - name: Copy the roboshop file
+       ansible.builtin.copy:
+         src: roboshop.conf
+         dest: /etc/nginx/default.d/roboshop.conf
+
+     - name: start and enable nginx
+       ansible.builtin.systemd:
+         state: started
+         enabled: true
+
+
+echo -e "\e[33m copying the roboshop config file \e[0m"
+cp /home/centos/robosho-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf   &>>log_file
+status_check $?
+
+echo -e "\e[33m enabling the nginx server \e[0m"
+systemctl enable nginx   &>>log_file
+status_check $?
+systemctl restart nginx   &>>log_file
+status_check $?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++
