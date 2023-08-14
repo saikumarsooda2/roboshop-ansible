@@ -4,31 +4,32 @@
   tasks:
   - name: installing nginx server
     ansible.builtin.yum:
-        name: nginx
-        stat: latest
-        
+      name: nginx
+      stat: latest
+      
   - name: removing directory
     ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: absent
-        
-  - name: removing directory
-    ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: absent
-        
+      path: /usr/share/nginx/html
+      state: absent
+      
+  - name: downloading and extracting frontend
+    ansible.builtin.unarchive:
+      src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+      
   - name: create a directory
     ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: directory
+      path: /usr/share/nginx/html
+      state: directory
         
   - name: Copy the roboshop file
     ansible.builtin.copy:
-        src: roboshop.conf
-        dest: /etc/nginx/default.d/roboshop.conf
+      src: roboshop.conf
+      dest: /etc/nginx/default.d/roboshop.conf
         
   - name: start and enable nginx
     ansible.builtin.systemd:
-        state: restarted
-        name: nginx
-        enabled: true
+      state: restarted
+      name: nginx
+      enabled: true
