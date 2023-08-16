@@ -1,13 +1,11 @@
 - name: setup frontend
   hosts: frontend-dev.devopspractice.lol
   become: yes
-  ignore_errors: True
   tasks:
   - name: installing nginx server
-    ansible.builtin.yum:
+    ansible.builtin.dnf:
       name: nginx
-      stat: latest
-      ignore_errors: True
+      state: latest
       
   - name: removing directory
     ansible.builtin.file:
