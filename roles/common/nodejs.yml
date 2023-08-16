@@ -1,0 +1,12 @@
+ - name: downloading nodejs repo
+   asible.builtin.shell:  curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  
+ - name: install nodejs
+   ansible.builtin.yum:
+     name: nodejs
+     state: installed
+     
+ - name: import tasks
+   ansible.builtin.import_tasks:
+     file: app_presetup.yml
+     

@@ -1,0 +1,5 @@
+- name: Setup Roboshop
+  tasks: all
+  become: yes
+  roles:
+    - "{{role_name}}
