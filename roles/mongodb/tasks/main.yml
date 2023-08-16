@@ -1,7 +1,3 @@
-- name: setup roboshop
-  hosts: all
-  become: yes
-  tasks:
     - name: copy  mongoDB repo
       ansible.builtin.copy:
         src: mongo.repo
