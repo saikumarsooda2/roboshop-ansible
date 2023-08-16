@@ -1,8 +1,9 @@
-
+   
     - name: installing nginx server
       ansible.builtin.yum:
         name: nginx
         state: latest
+        ignore_errors: True
   
     - name: removing directory
       ansible.builtin.file:
