@@ -1,5 +1,5 @@
 - name: setup frontend
-  hosts: all
+  hosts: frontend-dev.devopspractice.lol
   become: yes
   ignore_errors: True
   tasks:
