@@ -1,9 +1,9 @@
 - name: setup frontend
-  hosts: frontend-dev.devopspractice.lol
+  hosts: all
   become: yes
   tasks:
   - name: installing nginx server
-    ansible.builtin.dnf:
+    ansible.builtin.yum:
       name: nginx
       state: latest
       
