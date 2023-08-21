@@ -1,0 +1,12 @@
+ - name: setup systemd setup
+   ansible.builtin.copy:
+     src: mongo.repo
+     dest: /etc/yum.repos.d/mongo.repo
+     
+ - name: installing mongo client
+   anisble.builtin.yum:
+     name: mongodb-org-shell
+     state: installed
+     
+ - name: load the schema
+   ansible.builtin.shell: mongo --host mongodb-dev.devopspractice.lol </app/schema/{{ component }}.js

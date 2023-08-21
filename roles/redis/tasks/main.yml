@@ -1,0 +1,32 @@
+
+ - name: installing redis repo
+   ansible.builtin.yum:
+    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    state: installed
+    
+ - name: enable redis version
+   ansible.builtin.shell: yum module enable redis:remi-6.2
+   
+ - name: install redis
+   ansible.builtin.yum:
+     name: redis
+     state: installed
+     
+ - name: replacing the ip address - /etc/redis.conf
+   ansible.builtin.replace:
+       path:  /etc/redis.conf
+       regexp: '127.0.0.1'
+       replace: '0.0.0.0'
+       
+ - name: replacing the ip address - /etc/redis/redis.conf
+   ansible.builtin.replace:
+       path: /etc/redis/redis.conf
+       regexp: '127.0.0.1'
+       replace: '0.0.0.0'
+       
+ - name: starting  redis
+   ansible.builtin.systemd:
+     name: redis
+     state: restarted
+     enabled: yes
+   

@@ -1,5 +1,10 @@
 
-- name: Import role
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: nodejs
+ - name: Import role
+   ansible.builtin.import_role:
+     name: common
+     tasks_from: nodejs
+    
+ - name: import role
+   ansible.builtin.import_role:
+     name: common
+     tasks_from: mongo_schema_repo

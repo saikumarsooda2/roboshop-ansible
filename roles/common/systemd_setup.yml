@@ -1,0 +1,13 @@
+ - name: setup systemd setup
+   ansible.builtin.copy:
+    src: "{{ component }}.service"
+     dest: /etc/systemd/system/{{ component }}.service
+    
+ - name: starting user
+   ansible.builtin.systemd:
+     name: "{{ component }}"
+     state: restarted
+     enabled: yes
+     daemon-reload: yes
+    
+   
