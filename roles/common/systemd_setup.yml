@@ -1,6 +1,6 @@
  - name: setup systemd setup
    ansible.builtin.copy:
-    src: "{{ component }}.service"
+     src: "{{ component }}.service"
      dest: /etc/systemd/system/{{ component }}.service
     
  - name: starting user

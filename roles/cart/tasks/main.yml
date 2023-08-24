@@ -1,0 +1,14 @@
+ - name: Import role
+     ansible.builtin.import_role:
+       name: common
+       tasks_from: nodejs
+      
+ - name: Import role
+     ansible.builtin.import_role:
+       name: common
+       tasks_from: app_presetup
+       
+ - name: Import role
+     ansible.builtin.import_role:
+       name: common
+       tasks_from: systemd_setup
