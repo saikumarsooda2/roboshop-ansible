@@ -1,5 +1,5 @@
  - name: downloading nodejs repo
-   asible.builtin.shell:  curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+   asible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
   
  - name: install nodejs
    ansible.builtin.yum:
