@@ -1,6 +1,6 @@
  - name: adding user
-  ansible.builtin.user:
-    name: roboshop
+   ansible.builtin.user:
+     name: roboshop
     
  - name: removing directory
    ansible.builtin.file:
@@ -13,7 +13,7 @@
      state: directory
      
  - name: downloading and extracting component
-     ansible.builtin.unarchive:
+   ansible.builtin.unarchive:
        src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
        dest: /app
        remote_src: yes
