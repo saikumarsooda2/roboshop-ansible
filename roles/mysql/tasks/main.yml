@@ -1,7 +1,5 @@
  - name: disable the server
-   ansible.builtin.systemd:
-     name: mysql
-     state: stopped
+   ansible.builtin.shell: yum module disable mysql -y
 
  - name: copying the mysql community server
    ansible.builtin.copy:
