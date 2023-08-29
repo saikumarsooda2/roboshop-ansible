@@ -16,8 +16,8 @@
 
 - name: adding the user rabbitmq
   community.rabbitmq.rabbitmq_user:
-    user: roboshop123
-    password: ".*" ".*" ".*"
+    user: roboshop
+    password: roboshop123
     vhost: /
     configure_priv: .*
     read_priv: .*
