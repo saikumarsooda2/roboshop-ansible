@@ -1,0 +1,16 @@
+- name: installing pyhon
+  ansible.builtin.shell: yum install python36 gcc python3-devel -y
+
+- name: app presetup
+  ansible.builtin.import_tasks:
+    name: app_presetup.yml
+
+- name: installing python
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
+
+- name: systemd setup
+  ansible.builtin.import_tasks:
+    name: systemd_setup.yml
+

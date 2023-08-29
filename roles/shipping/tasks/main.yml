@@ -1,0 +1,4 @@
+- name: load maven
+  ansible.builtin.import_roles:
+    name: common
+    file: maven
