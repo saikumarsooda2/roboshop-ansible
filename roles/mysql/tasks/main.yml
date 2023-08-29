@@ -3,6 +3,11 @@
      name: mysql
      state: disabled
 
+ - name: copying the mysql community server
+   ansible.builtin.copy:
+     src: mysql.repo
+     dest: /etc/yum.repos.d/mysql.repo
+
  - name: installing mysql community server
    ansible.builtin.yum:
      name: mysql-community-server
@@ -14,6 +19,6 @@
  - name: start and enable the mysql
    ansible.builtin.service:
      name: mysqld
-     state: started
+     state: restarted
      enable: true
 
