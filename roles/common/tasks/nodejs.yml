@@ -6,7 +6,16 @@
      name: nodejs
      state: installed
      
- - name: import tasks
+ - name: app prerequisites
    ansible.builtin.import_tasks:
      file: app_presetup.yml
-     
+
+ - name: installing dependencies
+   ansible.builtin.shell: npm install
+   args:
+     chdir: /app
+
+ - name: importing tasks
+   ansible.builtin.import_tasks:
+     tasks_from: systemd_setup.yml
+
