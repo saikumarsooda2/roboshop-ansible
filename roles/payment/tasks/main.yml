@@ -1,0 +1,27 @@
+- name: install python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: import tasks
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app_presetup.yml
+
+- name: installing dependensies
+  ansible.builtin.file:
+   name:
+     - pip3.6
+     - install -r requirements.txt
+
+   args:
+      chdir: /app
+
+
+- name: import tasks
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: systemd_setup.yml
