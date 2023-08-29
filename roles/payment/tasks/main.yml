@@ -13,9 +13,7 @@
 
 - name: installing dependensies
   ansible.builtin.file:
-   name:
-     - pip3.6
-     - install -r requirements.txt
+   name: pip3.6 install -r requirements.txt
 
    args:
       chdir: /app
