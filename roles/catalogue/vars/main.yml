@@ -1,3 +1,5 @@
 component: catalogue
 
 load_schema: true
+
+env: dev
