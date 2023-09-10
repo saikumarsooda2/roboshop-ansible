@@ -9,9 +9,9 @@
     tasks_from: app_presetup.yml
 
 - name: load the dependencies
-  ansible.builtin.file:
+  ansible.builtin.command:
     name:
-         - go mod init dispatch
+         -  go mod init dispatch
          -  go get
          -  go build
     args:
