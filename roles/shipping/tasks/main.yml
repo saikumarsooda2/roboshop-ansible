@@ -1,4 +1,4 @@
  - name: load maven
    ansible.builtin.import_tasks:
      name: common
-     tasks_from: maven
+     tasks_from: maven.yml
