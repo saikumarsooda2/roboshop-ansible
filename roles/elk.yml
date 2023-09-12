@@ -1,0 +1,6 @@
+- name: Setup elk
+  hosts: all
+  become: yes
+  connection: localhost
+  roles:
+    - elk
