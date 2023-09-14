@@ -3,7 +3,7 @@
   
  - name: install nodejs
    ansible.builtin.yum:
-     name: nodejs
+     name: dnf nodejs
      state: installed
      
  - name: app prerequisites
@@ -13,7 +13,7 @@
  - name: installing dependencies
    ansible.builtin.shell: npm install
    args:
-     chdir: /app
+      chdir: /app
 
  - name: load schema
    ansible.builtin.import_tasks:
