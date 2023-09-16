@@ -24,7 +24,9 @@
       ansible.builtin.template:
         src: roboshop.conf
         dest: /etc/nginx/default.d/roboshop.conf
-  
+        remote_src: yes
+
+
     - name: start and enable nginx
       ansible.builtin.systemd:
         state: restarted
