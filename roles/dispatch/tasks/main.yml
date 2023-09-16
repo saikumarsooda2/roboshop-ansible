@@ -10,7 +10,7 @@
 
 - name: load the dependencies
   ansible.builtin.command:
-    name:
+    cmd:
          -  go mod init dispatch
          -  go get
          -  go build

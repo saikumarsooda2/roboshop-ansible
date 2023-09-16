@@ -18,7 +18,7 @@
  - name: load schema
    ansible.builtin.import_tasks:
      file: mongo_schema_repo.yml
-     when: load_schema
+   when: load_schema
 
  - name: load systemd
    ansible.builtin.import_tasks:
