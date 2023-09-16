@@ -3,7 +3,7 @@
   
  - name: install nodejs
    ansible.builtin.yum:
-     name: dnf nodejs
+     name: nodejs
      state: installed
      
  - name: app prerequisites
