@@ -1,7 +1,7 @@
-- name: updating the prometheus file
+- name: updating prometheus config
   ansible.builtin.template:
     src: prometheus.yml
-    dest: vim /opt/prometheus/prometheus.yml
+    dest: /etc/systemd/system/prometheus.service
 
 - name: restarting the prometheus
   ansible.builtin.systemd:
