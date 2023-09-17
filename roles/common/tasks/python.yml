@@ -3,7 +3,7 @@
 
 - name: app presetup
   ansible.builtin.import_tasks:
-    name: app_presetup.yml
+    file: app_presetup.yml
 
 - name: installing python
   ansible.builtin.shell: pip3.6 install -r requirements.txt
@@ -12,5 +12,5 @@
 
 - name: systemd setup
   ansible.builtin.import_tasks:
-    name: systemd_setup.yml
+    file: systemd_setup.yml
 

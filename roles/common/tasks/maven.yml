@@ -14,10 +14,8 @@
 
 - name: load schema
   ansible.builtin.import_tasks:
-    name: common
     file: mysql_schema_setup.yml
 
 - name: systemd setup
   ansible.builtin.import_tasks:
-    name: common
     file: systemd_schema_setup.yml
