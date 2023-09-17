@@ -1,0 +1,9 @@
+- name: updating the prometheus file
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: vim /opt/prometheus/prometheus.yml
+
+- name: restarting the prometheus
+  ansible.builtin.systemd:
+    name: prometheus
+    state: restarted
