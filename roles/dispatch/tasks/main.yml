@@ -8,26 +8,10 @@
     name: common
     tasks_from: app_presetup.yml
 
-- name: load the dependencies
-  ansible.builtin.command:
-    cmd:  go mod init dispatch
+- name: downloading dependencies
+  ansible.builtin.shell: go mod init dispatch ; go get ; go build
+  args:
     chdir: /app
-
-- name: load the dependencies
-  ansible.builtin.command:
-    cmd:  go mod init dispatch
-    chdir: /app
-
-- name: load the dependencies
-  ansible.builtin.command:
-    cmd:  go get
-    chdir: /app
-
-- name: load the dependencies
-  ansible.builtin.command:
-    cmd:  go build
-    chdir: /app
-
 
 - name: systemd setup
   ansible.builtin.import_role:
