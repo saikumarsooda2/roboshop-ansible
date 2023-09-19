@@ -1,24 +1,22 @@
- - name: Stop service httpd, if started
-   ansible.builtin.service:
+- name: disabling mysql
+  ansible.builtin.shell: yum module disable mysql -y
+
+- name: Copy repo file
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: installing mysql
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: Start and enable mysql service
+  ansible.builtin.service:
     name: mysqld
-    state: stopped
+    state: restarted
+    enabled: yes
 
- - name: copying the mysql community server
-   ansible.builtin.template:
-     src: mysql.repo
-     dest: /etc/yum.repos.d/mysql.repo
 
- - name: installing mysql community server
-   ansible.builtin.yum:
-     name: mysql-community-server
-     state: installed
-
- - name: changing the password
-   ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
-
- - name: start and enable the mysql
-   ansible.builtin.service:
-     name: mysqld
-     state: restarted
-     enable: true
-
+- name: setting password to mysql
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
