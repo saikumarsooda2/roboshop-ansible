@@ -1,14 +1,14 @@
  - name: Import role
    ansible.builtin.import_role:
        name: common
-       tasks_from: nodejs
+       tasks_from: nodejs.yml
       
  - name: Import role
    ansible.builtin.import_role:
        name: common
-       tasks_from: app_presetup
+       tasks_from: app_presetup.yml
        
  - name: Import role
    ansible.builtin.import_role:
        name: common
-       tasks_from: systemd_setup
+       tasks_from: systemd_setup.yml
